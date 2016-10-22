@@ -8,6 +8,8 @@ a = A(:,1);
 b = A(:,2);
 ratios = A(:,3);
 
+filtered = Lowpass(ratios, 100)
+
 t = []
 for i = 0:length(a)-1
     t(i+1) = 1/4*i
@@ -21,6 +23,7 @@ p0 = plot(t, ones([1, length(a)]),'--k');
 p1 = plot(t, a);
 p2 = plot(t, b);
 p3 = plot(t, ratios);
+p4 = plot(t, filtered);
 
 l = legend([p1, p2, p3],'a', 'b', 'a/b ratio');
 l.Location = 'northeastoutside';

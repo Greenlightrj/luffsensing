@@ -2,15 +2,15 @@
 Code for reading from two flex sensors with an MCP3302 analog digital converter
 """
 from time import sleep
-from gpiozero import MCP3302
+from gpiozero import MCP3008
 from collections import deque
 
 
 class FlexSensor():
 
     def __init__(self):
-        self.a = MCP3302(channel=0)  # objects that access the flex sensor values through the adc
-        self.b = MCP3302(channel=1)
+        self.a = MCP3008(channel=0)  # objects that access the flex sensor values through the adc
+        self.b = MCP3008(channel=1)
         self.dratios = deque('', 15)  # deque, which is like a list but for queueing
         self.dfav = deque('', 15)
 
