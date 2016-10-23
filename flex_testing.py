@@ -25,14 +25,14 @@ def runtest():
     filename = 'LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
 
     # blink light for five seconds
-    for i in range(1, 4):
+    for i in range(1, 10):
         statLED.toggle()
         sleep(0.5)
 
     # open file and write one minute of record while blinking light and updating LEDs
     with open(filename, 'w') as f:
             writer = csv.writer(f)
-            for i in range(0, 20):  # number of quarter-seconds to run
+            for i in range(0, 480):  # number of quarter-seconds to run
                 # get data to write to file
                 time = datetime.datetime.today()
                 timestr = time.strftime("%X")
