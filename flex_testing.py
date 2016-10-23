@@ -10,11 +10,11 @@ from gpiozero import Button, LED
 
 F = FlexSensor()
 
-button = Button(19, bounce_time=.025)  # initialize gpiozero button class with debounce
-statLED = LED(6)
-portLED = LED(16)
-stbdLED = LED(21)
-luffLED = LED(20)
+button = Button(13, bounce_time=.025)  # initialize gpiozero button class with debounce
+statLED = LED(19)
+portLED = LED(26)
+stbdLED = LED(6)
+#luffLED = LED(20)
 
 
 def runtest():
@@ -32,7 +32,7 @@ def runtest():
     # open file and write one minute of record while blinking light and updating LEDs
     with open(filename, 'w') as f:
             writer = csv.writer(f)
-            for i in range(0, 100):  # number of quarter-seconds to run
+            for i in range(0, 20):  # number of quarter-seconds to run
                 # get data to write to file
                 time = datetime.datetime.today()
                 timestr = time.strftime("%X")
@@ -47,10 +47,10 @@ def runtest():
                     stbdLED.off()
                     portLED.on()
 
-                if luff:
-                    luffLED.on()
-                else:
-                    luffLED.off()
+                #if luff:
+                #    luffLED.on()
+                #else:
+                #    luffLED.off()
 
                 writer.writerow([timestr, a, b, ratio, tack, luff])  # record data
                 statLED.toggle()
@@ -63,5 +63,5 @@ while True:
     statLED.on()  # turn on LED to tell user it's ready
     portLED.off()  # turn off other LEDs while waiting
     stbdLED.off()
-    luffLED.off()
+    #luffLED.off()
     runtest()  # runs runtest() which waits for button press

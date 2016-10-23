@@ -59,8 +59,9 @@ class FlexSensor():
             tack = 1
 
         # determine luffing based on average distance from average
-        luff = 1  # default is no luffing
-        if avdistfromav > 0.025:
-            luff = 0
-
+        #luff = 1  # default is no luffing
+        #if avdistfromav > 0.025:
+        #    luff = 0
+        luff = 0
+        
         return(tack, luff)
