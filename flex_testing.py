@@ -22,7 +22,7 @@ def runtest():
     button.wait_for_press()  # function is running, but wait for the button press to start recording data.
 
     # grab a timestamp
-    filename = 'LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
+    filename = '/home/pi/luffsensing/LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
 
     # blink light for five seconds
     for i in range(1, 10):
