@@ -21,6 +21,8 @@ def runtest():
 
     button.wait_for_press()  # function is running, but wait for the button press to start recording data.
 
+    print("Running Test")
+
     # grab a timestamp
     filename = 'LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
 
@@ -56,7 +58,7 @@ def runtest():
                 statLED.toggle()
 
                 sleep(.25)
-
+    f.close()
 
 # run and record data as many times in a row as you need
 while True:
