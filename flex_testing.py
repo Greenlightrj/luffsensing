@@ -24,7 +24,7 @@ def runtest():
     print("Running Test")
 
     # grab a timestamp
-    filename = 'LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
+    filename = '/home/pi/luffsensing/LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
 
     # blink light for five seconds
     for i in range(1, 10):
