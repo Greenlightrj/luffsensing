@@ -1,14 +1,16 @@
 %A basic plotter for the luff sensor data
 %makes a png of the same name
   
-filename = 'luffrecord20161025_2230.csv'; %replace this with the one you want to load
+filename = 'luffrecord20160623_1257.csv'; %replace this with the one you want to load
 
 A = csvread(filename, 0, 1); %cut off the timestamp because the colons won't load right
 a = A(:,1);
 b = A(:,2);
 ratios = A(:,3);
 
-t = []
+filtered = LowPass(ratios, .995);
+
+t = [];
 for i = 0:length(a)-1
     t(i+1) = 1/4*i
 end
@@ -21,6 +23,7 @@ p0 = plot(t, ones([1, length(a)]),'--k');
 p1 = plot(t, a);
 p2 = plot(t, b);
 p3 = plot(t, ratios);
+p4 = plot(t, filtered);
 
 l = legend([p1, p2, p3],'a', 'b', 'a/b ratio');
 l.Location = 'northeastoutside';
