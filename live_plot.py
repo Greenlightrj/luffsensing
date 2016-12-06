@@ -13,7 +13,7 @@ from flex_sensor import FlexSensor
 #comment out when running on computer
 F = FlexSensor()
 
-def read(fileobj):
+def read(fileobj=None):
     if fileobj:
             reader = csv.reader(fileobj)
             row = next(reader)
