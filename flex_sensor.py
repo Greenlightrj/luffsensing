@@ -5,6 +5,7 @@ python3
 from time import sleep, process_time
 from gpiozero import MCP3008
 from collections import deque
+import matplotlib as m
 import matplotlib.pyplot as plt
 
 
@@ -58,8 +59,8 @@ class FlexSensor():
 
         nowtime = process_time() - timestamp
         if oldratio is not None: # allows this function to be called after the first reading without breaking
-            plt.plot([nowtime - matplotlib.dates.seconds(.25), nowtime], [oldratio, ratio], hold=True, color='black')
-            plt.axis([nowtime - matplotlib.dates.seconds(10), nowtime + matplotlib.dates.seconds(.5), .8, 1.2])
+            plt.plot([nowtime - m.dates.seconds(.25), nowtime], [oldratio, ratio], hold=True, color='black')
+            plt.axis([nowtime - m.dates.seconds(10), nowtime + m.dates.seconds(.5), .8, 1.2])
         plt.show(block=False)
         plt.pause(0.05)
 
