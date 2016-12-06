@@ -5,9 +5,11 @@ python3
 """
 
 from flex_sensor import FlexSensor
-from time import sleep
+from time import sleep, process_time
 
 F = FlexSensor()
+
+t = process_time()
 
 for i in range(0, 100):
     print('reading')
