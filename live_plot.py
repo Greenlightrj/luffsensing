@@ -54,7 +54,6 @@ def liveplot(filename=0):
                 #plt.scatter(i, ratio, hold=True)
                 plt.show(block=False)
                 plt.pause(0.05)
-                sleep(0.25)
 
 
 if __name__ == "__main__":
