@@ -49,7 +49,7 @@ class FlexSensor():
         automatically scrolls sideways. 
         """
         ratio = self.dratios[-1]
-        if len(dratios) > 1:
+        if len(self.dratios) > 1:
             oldratio = self.dratios[-2]
         else:
             oldratio = None
