@@ -45,7 +45,7 @@ def liveplot(filename=0):
         print("Live Sensing begun")
         for i in range(0, 100):
                 oldratio = ratio
-                a, b, ratio = read(f)
+                a, b, ratio = read()
                 print(ratio)
 
                 if oldratio is not None:
