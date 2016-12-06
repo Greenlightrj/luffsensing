@@ -1,5 +1,6 @@
 """"
 Code for reading from two flex sensors with an MCP3302 analog digital converter
+python3
 """
 from time import sleep
 from gpiozero import MCP3008
