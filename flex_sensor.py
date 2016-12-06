@@ -5,6 +5,7 @@ python3
 from time import sleep
 from gpiozero import MCP3008
 from collections import deque
+import matplotlib.pyplot as plt
 
 
 class FlexSensor():
@@ -40,6 +41,26 @@ class FlexSensor():
 
         self.dratios.append(ratio)
         return(a, b, ratio)
+
+    def plot(self):
+        """
+        plots a line representing the last two ratios recorded using matplotlib.
+        does not check for new data--call readsensors() first.
+        automatically scrolls sideways. 
+        """
+        ratio = self.dratios[-1]
+        if len(dratios) > 1:
+            oldratio = self.dratios[-2]
+        else:
+            oldratio = None
+
+        print(ratio)
+
+        if oldratio is not None: # allows this function to be called after the first reading without breaking
+            plt.plot([i - 1, i], [oldratio, ratio], hold=True, color='black')
+            plt.axis([i - 20, i + 2, .8, 1.2])
+        plt.show(block=False)
+        plt.pause(0.05)
 
     def sailstate(self):
         """
