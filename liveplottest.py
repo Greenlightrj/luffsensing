@@ -16,4 +16,4 @@ for i in range(0, 100):
     print('plotting')
     F.plot(starttime)
     print('sleeping')
-    sleep(0.25)
+    #sleep(0.25)
