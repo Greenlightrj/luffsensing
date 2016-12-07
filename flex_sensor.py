@@ -70,6 +70,9 @@ class FlexSensor():
 
         plt.figure(1)
         if len(self.dratios) > 1:
+            print(times)
+            print(self.dratios[-1])
+            print(self.dratios[-2])
             plt.plot([times[-1], times[-2]], [self.dratios[-1], self.dratios[-2]], hold=True, color='black')
         plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + 1, .8, 1.2])
 
