@@ -2,7 +2,7 @@
 Code for reading from two flex sensors with an MCP3302 analog digital converter
 python3
 """
-from time import sleep, process_time
+from time import sleep, time
 from gpiozero import MCP3008
 from collections import deque
 import matplotlib as m
@@ -14,6 +14,7 @@ class FlexSensor():
     def __init__(self):
         self.a = MCP3008(channel=0)  # objects that access the flex sensor values through the adc
         self.b = MCP3008(channel=1)
+        self.dtime = deque('', 15)
         self.dratios = deque('', 15)  # deque, which is like a list but for queueing
         self.dfav = deque('', 15)
 
@@ -40,14 +41,17 @@ class FlexSensor():
         b = self.b.value
         ratio = a / b
 
+        self.dtime.append(process_time)
         self.dratios.append(ratio)
         return(a, b, ratio)
 
-    def plot(self, timestamp):
+    def plot(self):
         """
-        plots a line representing the last two ratios recorded using matplotlib.
+        plots a line representing the last ratios recorded using matplotlib.
         does not check for new data--call readsensors() first.
         automatically scrolls sideways. 
+        """
+        
         """
         ratio = self.dratios[-1]
         if len(self.dratios) > 1:
@@ -56,11 +60,12 @@ class FlexSensor():
             oldratio = None
 
         print(ratio)
-
+        
         nowtime = process_time() - timestamp
         if oldratio is not None: # allows this function to be called after the first reading without breaking
-            plt.plot([nowtime - m.dates.seconds(.25), nowtime], [oldratio, ratio], hold=True, color='black')
-            plt.axis([nowtime - m.dates.seconds(10), nowtime + m.dates.seconds(.5), .8, 1.2])
+        """
+        plt.plot([dtimes], [dratios], hold=True, color='black')
+        plt.axis([dtimes[1], dtimes[-1], .8, 1.2])
         plt.show(block=False)
         plt.pause(0.05)
 

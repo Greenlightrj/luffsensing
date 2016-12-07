@@ -5,16 +5,15 @@ python3
 """
 
 from flex_sensor import FlexSensor
-from time import sleep, process_time
+from time import sleep
 
 F = FlexSensor()
 
-t = process_time()
 
 for i in range(0, 100):
     print('reading')
     F.readsensors()
     print('plotting')
-    F.plot(t)
-    #print('sleeping')
-    #sleep(0.25)
+    F.plot()
+    print('sleeping')
+    sleep(0.25)
