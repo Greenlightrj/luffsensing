@@ -49,31 +49,16 @@ class FlexSensor():
 
     def plot(self, starttime):
         """
-        plots a line representing the last ratios recorded using matplotlib.
+        plots a line representing the last 15 recorded using matplotlib.
         does not check for new data--call readsensors() first.
-        automatically scrolls sideways. 
+        automatically scrolls sideways. time displayed is time elapsed since starttime
+        (in format given by time.time(), seconds.)
         """
         
-        """
-        ratio = self.dratios[-1]
-        if len(self.dratios) > 1:
-            oldratio = self.dratios[-2]
-        else:
-            oldratio = None
-
-        print(ratio)
-        
-        nowtime = process_time() - timestamp
-        if oldratio is not None: # allows this function to be called after the first reading without breaking
-        """
         times = [x - starttime for x in self.dtimes]
 
-        plt.figure(1)
-        if len(self.dratios) > 1:
-            print(times[-1])
-            print(times[-2])
-            print(self.dratios[-1])
-            print(self.dratios[-2])
+        plt.figure(1) # return to same figure plotted before
+        if len(self.dratios) > 1: # can't plot a line on the first iteration
             plt.plot([times[-1], times[-2]], [self.dratios[-1], self.dratios[-2]], hold=True, color='black')
         plt.axis([times[0], times[-1] + 1, .8, 1.2])
 
