@@ -18,6 +18,7 @@ class FlexSensor():
         self.dtimes = deque('', 15)
         self.dratios = deque('', 15)  # deque, which is like a list but for queueing
         self.dfav = deque('', 15)
+        self.figure = plt.figure(1)
 
     def test(self):
         """
@@ -66,7 +67,8 @@ class FlexSensor():
         if oldratio is not None: # allows this function to be called after the first reading without breaking
         """
         times = [x - starttime for x in self.dtimes]
-        plt.ion()
+
+        plt.figure(1)
         plt.plot([times], [self.dratios], hold=True, color='black')
         plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + timedelta(second = 1), .8, 1.2])
 
