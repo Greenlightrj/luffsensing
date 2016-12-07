@@ -3,6 +3,7 @@ Code for reading from two flex sensors with an MCP3302 analog digital converter
 python3
 """
 from time import sleep, time
+from datetime import timedelta
 from gpiozero import MCP3008
 from collections import deque
 import matplotlib as m
@@ -45,7 +46,7 @@ class FlexSensor():
         self.dratios.append(ratio)
         return(a, b, ratio)
 
-    def plot(self):
+    def plot(self, starttime):
         """
         plots a line representing the last ratios recorded using matplotlib.
         does not check for new data--call readsensors() first.
@@ -64,8 +65,8 @@ class FlexSensor():
         nowtime = process_time() - timestamp
         if oldratio is not None: # allows this function to be called after the first reading without breaking
         """
-        plt.plot([dtimes], [dratios], hold=True, color='black')
-        plt.axis([dtimes[1], dtimes[-1], .8, 1.2])
+        plt.plot([dtimes-starttime], [dratios], hold=True, color='black')
+        plt.axis([dtimes[1] - starttime, dtimes[-1] + timedelta(second=1), .8, 1.2])
         plt.show(block=False)
         plt.pause(0.05)
 
