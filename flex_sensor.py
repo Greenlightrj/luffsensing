@@ -65,8 +65,9 @@ class FlexSensor():
         nowtime = process_time() - timestamp
         if oldratio is not None: # allows this function to be called after the first reading without breaking
         """
+        times = [x - starttime for x in self.dtimes]
 
-        plt.plot([self.dtimes - starttime], [self.dratios], hold=True, color='black')
+        plt.plot([times], [self.dratios], hold=True, color='black')
         plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + timedelta(second = 1), .8, 1.2])
 
         plt.show(block=False)
