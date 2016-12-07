@@ -15,7 +15,7 @@ class FlexSensor():
     def __init__(self):
         self.a = MCP3008(channel=0)  # objects that access the flex sensor values through the adc
         self.b = MCP3008(channel=1)
-        self.dtime = deque('', 15)
+        self.dtimes = deque('', 15)
         self.dratios = deque('', 15)  # deque, which is like a list but for queueing
         self.dfav = deque('', 15)
 
@@ -42,7 +42,7 @@ class FlexSensor():
         b = self.b.value
         ratio = a / b
 
-        self.dtime.append(process_time)
+        self.dtimes.append(time())
         self.dratios.append(ratio)
         return(a, b, ratio)
 
@@ -65,8 +65,10 @@ class FlexSensor():
         nowtime = process_time() - timestamp
         if oldratio is not None: # allows this function to be called after the first reading without breaking
         """
-        plt.plot([dtimes-starttime], [dratios], hold=True, color='black')
-        plt.axis([dtimes[1] - starttime, dtimes[-1] + timedelta(second=1), .8, 1.2])
+
+        plt.plot([self.dtimes - starttime], [self.dratios], hold=True, color='black')
+        plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + timedelta(second = 1), .8, 1.2])
+
         plt.show(block=False)
         plt.pause(0.05)
 
