@@ -66,7 +66,7 @@ class FlexSensor():
         if oldratio is not None: # allows this function to be called after the first reading without breaking
         """
         times = [x - starttime for x in self.dtimes]
-
+        plt.ion()
         plt.plot([times], [self.dratios], hold=True, color='black')
         plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + 1, .8, 1.2])
 
