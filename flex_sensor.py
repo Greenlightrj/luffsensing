@@ -18,7 +18,6 @@ class FlexSensor():
         self.dtimes = deque('', 15)
         self.dratios = deque('', 15)  # deque, which is like a list but for queueing
         self.dfav = deque('', 15)
-        self.figure = plt.figure(1)
 
     def test(self):
         """
@@ -54,7 +53,8 @@ class FlexSensor():
         automatically scrolls sideways. time displayed is time elapsed since starttime
         (in format given by time.time(), seconds.)
         """
-        
+
+        self.figure = plt.figure(1)       
         times = [x - starttime for x in self.dtimes]
 
         plt.figure(1) # return to same figure plotted before
