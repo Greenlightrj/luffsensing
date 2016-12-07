@@ -16,5 +16,5 @@ for i in range(0, 100):
     F.readsensors()
     print('plotting')
     F.plot(t)
-    print('sleeping')
-    sleep(0.25)
+    #print('sleeping')
+    #sleep(0.25)
