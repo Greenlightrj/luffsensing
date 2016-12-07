@@ -70,7 +70,7 @@ class FlexSensor():
 
         plt.figure(1)
         plt.plot([times], [self.dratios], hold=True, color='black')
-        plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + timedelta(second = 1), .8, 1.2])
+        plt.axis([self.dtimes[0] - starttime, self.dtimes[-1] + 1, .8, 1.2])
 
         plt.show(block=False)
         plt.pause(0.05)
