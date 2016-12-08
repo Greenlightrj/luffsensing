@@ -67,13 +67,14 @@ class FlexSensor():
 
     def sailstate(self):
         """
+        important: call readsensors first
         uses the last 15 ratios to determine whether the sail is luffing, and what tack it's on.
         returns a tuple
         the first digit is 1 if the boat is on a starboard tack and -1 if on a port tack
         the second digit is 1 if the sail is full and 0 if it is luffing.
         if luffing, the tack is probably inaccurate. idea: multiply the two.
         """
-        self.readsensors()  # important to get new ratio value. it is automatically added to self.dratios.
+        #self.readsensors()  # important to get new ratio value. it is automatically added to self.dratios.
         average = float(sum(self.dratios)) / len(self.dratios)  # find the running average of the flex sensor ratio
         self.dfav.append(abs(average - self.dratios[-1]))  # this is the distace of the current ratio from the running average
         avdistfromav = float(sum(self.dfav)) / len(self.dfav)        # the average distance from average
