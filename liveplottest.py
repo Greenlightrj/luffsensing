@@ -11,9 +11,6 @@ F = FlexSensor()
 starttime = time()
 
 for i in range(0, 100):
-    print('reading')
     F.readsensors()
-    print('plotting')
     F.plot(starttime)
-    print('sleeping')
     #sleep(0.25)
