@@ -1,7 +1,7 @@
 %A basic plotter for the luff sensor data
 %makes a png of the same name
   
-filename = 'luffrecord20161025_2230.csv'; %replace this with the one you want to load
+filename = 'luffrecord20161208_0349.csv'; %replace this with the one you want to load
 
 A = csvread(filename, 0, 1); %cut off the timestamp because the colons won't load right
 a = A(:,1);

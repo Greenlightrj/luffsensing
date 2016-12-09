@@ -31,7 +31,7 @@ class FlexSensor():
 
             print(self.a.value / self.b.value)
 
-            sleep(.25)
+            #sleep(.25)
 
     def readsensors(self):
         """
