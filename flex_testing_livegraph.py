@@ -64,7 +64,7 @@ def runtest():
                 writer.writerow([timestr, a, b, ratio, tack, luff, sec])  # record data
                 statLED.toggle()
 
-                sleep(.25)
+                #sleep(.25)
     f.close()
 
 # run and record data as many times in a row as you need
