@@ -66,6 +66,6 @@ def runtest():
 while True:
     statLED.on()  # turn on LED to tell user it's ready
     portLED.off()  # turn off other LEDs while waiting
-    stbdLED.off()
-    #luffLED.off()
+    #stbdLED.off()
+    luffLED.off()
     runtest()  # runs runtest() which waits for button press
