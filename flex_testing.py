@@ -31,10 +31,10 @@ def runtest():
         statLED.toggle()
         sleep(0.5)
 
-    # open file and write one minute of record while blinking light and updating LEDs
+    # open file and write two minutes of record while blinking light and updating LEDs
     with open(filename, 'w') as f:
             writer = csv.writer(f)
-            for i in range(0, 48):  # number of quarter-seconds to run
+            for i in range(0, 480):  # number of quarter-seconds to run
                 # get data to write to file
                 time = datetime.datetime.today()
                 timestr = time.strftime("%X")
