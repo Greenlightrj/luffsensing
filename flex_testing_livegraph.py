@@ -16,6 +16,10 @@ portLED = LED(26)
 stbdLED = LED(6)
 #luffLED = LED(20)
 
+## Not quite working
+## Must SSH with X-forwarding (ssh -XY pi@sparrow.local)<- I think but i don't quite remember
+## doesn't seem to plot proper data when run in pi startx
+## consecutive plots go on top of each other
 
 def runtest():
 
