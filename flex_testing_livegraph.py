@@ -21,7 +21,7 @@ def runtest():
 
     button.wait_for_press()  # function is running, but wait for the button press to start recording data.
 
-    print("Running Test")
+    print("Running Live Graph Test")
 
     # grab a timestamp
     filename = '/home/pi/luffsensing/LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"

@@ -13,15 +13,15 @@ F = FlexSensor()
 button = Button(13, bounce_time=.025)  # initialize gpiozero button class with debounce
 statLED = LED(19)
 portLED = LED(26)
-stbdLED = LED(6)
-#luffLED = LED(20)
+#stbdLED = LED(6)
+luffLED = LED(6)
 
 
 def runtest():
 
     button.wait_for_press()  # function is running, but wait for the button press to start recording data.
 
-    print("Running Test")
+    print("Running Luff Sensing Test")
 
     # grab a timestamp
     filename = '/home/pi/luffsensing/LuffRecords/luffrecord' + datetime.datetime.strftime(datetime.datetime.today(), "%Y%m%d_%H%M") + ".csv"
@@ -42,17 +42,19 @@ def runtest():
                 tack, luff = F.sailstate()
 
                 # turn on LEDs
+                # red (port) LED is tack
                 if tack > 0:
-                    stbdLED.on()
+                    #stbdLED.on()
                     portLED.off()
                 elif tack < 0:
-                    stbdLED.off()
+                    #stbdLED.off()
                     portLED.on()
 
-                #if luff:
-                #    luffLED.on()
-                #else:
-                #    luffLED.off()
+                # stbd (blue) LED is luff:
+                if luff:
+                    luffLED.on()
+                else:
+                    luffLED.off()
 
                 writer.writerow([timestr, a, b, ratio, tack, luff])  # record data
                 statLED.toggle()
