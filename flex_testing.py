@@ -40,7 +40,7 @@ def runtest():
                 timestr = time.strftime("%X")
                 a, b, ratio = F.readsensors()
                 tack, luff = F.sailstate()
-                print(ratio)
+                print(a, b, ratio)
                 # turn on LEDs
                 # red (port) LED is tack
                 if tack > 0:
