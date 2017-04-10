@@ -19,11 +19,11 @@ clf % clear figure
 hold on
 title([filename(15:16), ' ', filename(17:18), ' ', filename(11:14), ' ', filename(20:21), ':', filename(22:23)])
  
-p0 = plot(t, ones([1, length(a)]),'--k');
-p1 = plot(t, a);
-p2 = plot(t, b);
+%p0 = plot(t, ones([1, length(a)]),'--k');
+%p1 = plot(t, a);
+%p2 = plot(t, b);
 p3 = plot(t, ratios);
-p4 = plot(t, filtered);
+%p4 = plot(t, filtered);
 
 l = legend([p1, p2, p3],'a', 'b', 'a/b ratio');
 l.Location = 'northeastoutside';
