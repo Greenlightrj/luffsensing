@@ -10,11 +10,13 @@ from gpiozero import Button, LED
 
 F = FlexSensor()
 
+# GPIOZero uses the GPIO pin number not the physical pin number.
 button = Button(13, bounce_time=.025)  # initialize gpiozero button class with debounce
-statLED = LED(19)
-portLED = LED(26)
-stbdLED = LED(6)
-#luffLED = LED(20)
+statLED = LED(19)  # white LED
+portLED = LED(26)  # red LED
+stbdLED = LED(6)   # green/blue LED
+#luffLED = LED(20) 
+
 
 ## Not quite working
 ## Must SSH with X-forwarding (ssh -XY pi@sparrow.local)<- I think but i don't quite remember
@@ -60,11 +62,12 @@ def runtest():
                     stbdLED.off()
                     portLED.on()
 
-                #if luff:
+                # disabled for now because sailstate luff detection isn't implemented
+                #if luff: 
                 #    luffLED.on()
                 #else:
                 #    luffLED.off()
-
+c
                 writer.writerow([timestr, a, b, ratio, tack, luff, sec])  # record data
                 statLED.toggle()
 

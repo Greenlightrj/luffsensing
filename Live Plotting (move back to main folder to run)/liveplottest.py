@@ -2,6 +2,8 @@
 Runs a flex sensor test that prints the outputs and ratio of the sensors
 and plots them with matplotlib.
 python3
+
+I don't remember whether this method or live_plot.py worked most recently.
 """
 
 from flex_sensor import FlexSensor

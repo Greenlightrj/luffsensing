@@ -1,5 +1,11 @@
 """
 Live test of tack sensing by flex sensors on sail
+
+Solid white LED when ready
+On button press, blinks slowly for five seconds then records two minutes of data (blinking rapidly) and saves to CSV file.
+Solid white LED means ready for another reading. Press button again to begin. Runs indefinitely.
+Pi must be shut down properly to save CSV files.
+
 """
 
 from time import sleep
@@ -10,11 +16,12 @@ from gpiozero import Button, LED
 
 F = FlexSensor()
 
+# GPIOZero uses GPIO pin numbering rather than
 button = Button(13, bounce_time=.025)  # initialize gpiozero button class with debounce
-statLED = LED(19)
-portLED = LED(26)
-#stbdLED = LED(6)
-luffLED = LED(6)
+statLED = LED(19)  # white LED
+portLED = LED(26)  # red LED
+#stbdLED = LED(6)  # green/blue LED
+luffLED = LED(6)  #changed because I don't have another LED
 
 
 def runtest():
@@ -66,6 +73,6 @@ def runtest():
 while True:
     statLED.on()  # turn on LED to tell user it's ready
     portLED.off()  # turn off other LEDs while waiting
-    #stbdLED.off()
+    #stbdLED.off() # not currently initialized
     luffLED.off()
     runtest()  # runs runtest() which waits for button press
